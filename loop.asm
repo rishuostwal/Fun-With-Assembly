@@ -9,7 +9,8 @@ increment:
     push ecx ; place the incremented number on top of stack
     add ecx, 48 ; add ASCII '0' to convert it to a character
 
-    mov [res], ecx ; this needs to be done for some unknown reason
+    mov [res], ecx ; this needs to be done (for some unknown reason)
+    ; Update: this needs to be done as ecx should point to a memory address
     mov ecx, res
 
     call print ; call print subroutine and push the return address on top of stack
@@ -25,7 +26,9 @@ print:
 
 print_newline:
     mov ecx, 0Ah ; place new line character on ecx
-    mov [res], ecx ; needs to be done, no idea why
+    mov [res], ecx ; needs to be done, (no idea why)
+    ; Update: ecx should point to a memory location which should contain a string literal
+    ; to be printed, hence this routine is necessary
     mov ecx, res ; move new line character to ecx
     call print ; print new line
     ret ; return back
